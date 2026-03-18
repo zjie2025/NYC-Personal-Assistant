@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NYC Personal Assistant</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --primary: linear-gradient(135deg, #667eea, #764ba2);
+    --bg: #f5f7fb;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    background: var(--bg);
+}
+
+/* header */
+header {
+    background:
+    linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+    url('https://images.unsplash.com/photo-1496588152823-86ff7695c0f9');
+    background-size: cover;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+/* services */
+.services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.service-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.service-img {
+    position: relative;
+    height: 180px;
+}
+
+.service-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.service-title {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    color: white;
+    font-weight: 600;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+
+.service-content {
+    padding: 20px;
+}
+
+.service-detail {
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.4s;
+}
+
+/* 按钮 */
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    margin-top: 15px;
+}
+
+.sms-btn {
+    background: #28a745;
+}
+
+.email-btn {
+    background: #667eea;
+}
+
+/* 表单 */
+form {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+/* 评论 */
+.reviews {
+    display: grid;
+    gap: 20px;
+}
+
+.review {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* 联系 */
+.contact {
+    text-align: center;
+}
+
+@media(max-width:700px){
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>NYC Personal Assistant</h1>
+<p>专业双语陪同 · 医疗 · 行政 · 生活服务</p>
+</header>
+
+<div class="container">
+
+<h2>Services / 服务内容</h2>
+
+<div class="services-grid">
+
+<!-- 医疗 -->
+<div class="service-card" onclick="toggle(this)">
+<div class="service-img">
+<img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad">
+<div class="service-title">Medical 医疗陪诊</div>
+</div>
+<div class="service-content">
+<div class="service-detail">
+<ul>
+<li>预约医生</li>
+<li>医院陪同</li>
+<li>翻译</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- 行政 -->
+<div class="service-card" onclick="toggle(this)">
+<div class="service-img">
+<img src="https://images.unsplash.com/photo-1486326658981-ed68abe5868e">
+<div class="service-title">Government 行政</div>
+</div>
+<div class="service-content">
+<div class="service-detail">
+<ul>
+<li>DMV</li>
+<li>社安局</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- 购物 -->
+<div class="service-card" onclick="toggle(this)">
+<div class="service-img">
+<img src="https://images.unsplash.com/photo-1508057198894-247b23fe5ade">
+<div class="service-title">Shopping 购物</div>
+</div>
+<div class="service-content">
+<div class="service-detail">
+<ul>
+<li>购物</li>
+<li>跑腿</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- ✅ 修复后的翻译图片 -->
+<div class="service-card" onclick="toggle(this)">
+<div class="service-img">
+<img src="https://images.unsplash.com/photo-1455390582262-044cdead277a">
+<div class="service-title">Translation 翻译</div>
+</div>
+<div class="service-content">
+<div class="service-detail">
+<ul>
+<li>文件翻译</li>
+<li>医疗翻译</li>
+<li>口译</li>
+</ul>
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- 联系 -->
+<div class="contact">
+<h2>Contact / 联系</h2>
+
+<p>📞 917-362-3277</p>
+<p>📧 zjie2025@gmail.com</p>
+
+<a href="sms:9173623277" class="btn sms-btn">📲 Send Text / 发短信</a>
+<a href="mailto:zjie2025@gmail.com" class="btn email-btn">📧 Email</a>
+</div>
+
+<!-- 表单 -->
+<h2>Book a Service / 预约服务</h2>
+
+<form action="mailto:zjie2025@gmail.com" method="post" enctype="text/plain">
+<input type="text" name="name" placeholder="Your Name / 姓名" required>
+<input type="tel" name="phone" placeholder="Phone / 电话">
+<textarea name="message" placeholder="Describe your request / 描述需求"></textarea>
+<button class="btn email-btn">Submit / 提交</button>
+</form>
+
+<!-- 评论 -->
+<h2>Client Reviews / 客户评价</h2>
+
+<div class="reviews">
+
+<div class="review">
+⭐️⭐️⭐️⭐️⭐️  
+非常专业，陪我去医院很安心！
+</div>
+
+<div class="review">
+⭐️⭐️⭐️⭐️⭐️  
+Helped me with DMV, super smooth experience.
+</div>
+
+<div class="review">
+⭐️⭐️⭐️⭐️⭐️  
+Reliable and patient, highly recommended!
+</div>
+
+</div>
+
+</div>
+
+<script>
+function toggle(card){
+let d = card.querySelector(".service-detail");
+
+if(d.style.maxHeight){
+d.style.maxHeight=null;
+}else{
+d.style.maxHeight=d.scrollHeight+"px";
+}
+}
+</script>
+
+</body>
+</html>

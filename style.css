@@ -1,0 +1,189 @@
+/* ===== 全局变量（蓝紫高级风） ===== */
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea, #764ba2);
+    --primary-color: #667eea;
+    --secondary-color: #764ba2;
+    --bg-color: #f5f7fb;
+    --card-bg: #ffffff;
+    --text-color: #1a1a1a;
+    --sub-text: #6b7280;
+    --border-color: #e5e7eb;
+}
+
+/* ===== 全局样式 ===== */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    margin: 0;
+    background: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.7;
+}
+
+/* ===== 顶部语言条 ===== */
+.lang-bar {
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9rem;
+    background: #eef2ff;
+    color: var(--sub-text);
+}
+
+/* ===== Header ===== */
+header {
+    background: 
+        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+        url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+header h1 {
+    font-size: 2.6rem;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+header p {
+    margin-top: 10px;
+    opacity: 0.9;
+}
+
+/* ===== 容器 ===== */
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 50px 20px;
+}
+
+/* ===== 标题 ===== */
+h2 {
+    font-size: 1.6rem;
+    margin-bottom: 25px;
+}
+
+/* ===== 服务卡片 ===== */
+.services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.service-card {
+    background: var(--card-bg);
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* hover 动效 */
+.service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(102,126,234,0.2);
+}
+
+/* 顶部渐变装饰条 */
+.service-card::before {
+    content: "";
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: var(--primary-gradient);
+}
+
+/* 图片 */
+.service-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+/* 标题 */
+.service-card h3 {
+    margin: 10px 0;
+}
+
+/* 描述 */
+.service-card p {
+    color: var(--sub-text);
+    font-size: 0.95rem;
+}
+
+/* ===== 展开内容 ===== */
+.service-detail {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.service-detail ul {
+    padding-left: 18px;
+    margin: 10px 0;
+}
+
+.service-detail li {
+    margin-bottom: 6px;
+}
+
+/* ===== 联系方式 ===== */
+.contact-box {
+    text-align: center;
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.contact-box p {
+    font-size: 1.1rem;
+    margin: 8px 0;
+}
+
+/* ===== 按钮 ===== */
+.btn, .contact-cta {
+    display: inline-block;
+    background: var(--primary-gradient);
+    color: white;
+    padding: 14px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+/* 按钮动效 */
+.btn:hover, .contact-cta:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(102,126,234,0.3);
+}
+
+/* ===== Footer ===== */
+footer {
+    text-align: center;
+    padding: 40px;
+    color: #9ca3af;
+    font-size: 0.9rem;
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 700px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    header {
+        padding: 70px 20px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+}
