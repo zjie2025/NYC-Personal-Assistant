@@ -1,282 +1,188 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYC Personal Assistant | 专业纽约双语陪同服务</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-light: #f9f9f9;
+            --text-dark: #333;
+        }
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin: 0;
+            background-color: #fff;
+        }
+        .container { width: 90%; max-width: 1000px; margin: auto; padding: 20px; }
+        
+        /* Header */
+        header {
+            text-align: center;
+            padding: 60px 0;
+            background: var(--primary-color);
+            color: white;
+        }
+        header h1 { margin: 0; font-size: 2.5em; letter-spacing: 2px; }
+        header p { opacity: 0.8; font-weight: 300; }
 
-<title>NYC Personal Assistant</title>
+        /* Sections */
+        section { padding: 40px 0; border-bottom: 1px solid #eee; }
+        h2 { text-align: center; color: var(--primary-color); margin-bottom: 30px; }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+        /* Service Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { color: var(--accent-color); margin-top: 0; }
 
-<style>
-:root {
-    --primary: linear-gradient(135deg, #667eea, #764ba2);
-    --bg: #f5f7fb;
-}
+        /* Pricing Table */
+        .price-box {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 5px solid var(--accent-color);
+        }
+        .price-tag { font-weight: bold; color: #e74c3c; font-size: 1.2em; }
+        .note { font-size: 0.9em; color: #666; font-style: italic; }
 
-body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    background: var(--bg);
-}
+        /* Advantages */
+        .adv-list { list-style: none; padding: 0; }
+        .adv-list li { margin-bottom: 10px; padding-left: 25px; position: relative; }
+        .adv-list li::before { content: '✓'; position: absolute; left: 0; color: #27ae60; font-weight: bold; }
 
-/* header */
-header {
-    background:
-    linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-    url('https://images.unsplash.com/photo-1496588152823-86ff7695c0f9');
-    background-size: cover;
-    color: white;
-    text-align: center;
-    padding: 100px 20px;
-}
+        /* Contact & Form */
+        .contact-info { text-align: center; background: var(--bg-light); padding: 30px; border-radius: 8px; }
+        form { display: flex; flex-direction: column; max-width: 500px; margin: 20px auto; }
+        input, textarea, button { margin-bottom: 10px; padding: 12px; border: 1px solid #ddd; border-radius: 4px; }
+        button { background: var(--accent-color); color: white; border: none; cursor: pointer; font-size: 1em; }
+        button:hover { background: #2980b9; }
 
-.container {
-    max-width: 1000px;
-    margin: auto;
-    padding: 40px 20px;
-}
+        /* Footer */
+        footer { text-align: center; padding: 40px; font-size: 0.8em; color: #999; }
 
-/* services */
-.services-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.service-card {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    cursor: pointer;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-}
-
-.service-img {
-    position: relative;
-    height: 180px;
-}
-
-.service-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.service-title {
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
-    color: white;
-    font-weight: 600;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-}
-
-.service-content {
-    padding: 20px;
-}
-
-.service-detail {
-    max-height: 0;
-    overflow: hidden;
-    transition: 0.4s;
-}
-
-/* 按钮 */
-.btn {
-    display: inline-block;
-    padding: 14px 28px;
-    border-radius: 8px;
-    text-decoration: none;
-    color: white;
-    margin-top: 15px;
-}
-
-.sms-btn {
-    background: #28a745;
-}
-
-.email-btn {
-    background: #667eea;
-}
-
-/* 表单 */
-form {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-}
-
-input, textarea {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-}
-
-/* 评论 */
-.reviews {
-    display: grid;
-    gap: 20px;
-}
-
-.review {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-/* 联系 */
-.contact {
-    text-align: center;
-}
-
-@media(max-width:700px){
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-}
-</style>
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.8em; }
+        }
+    </style>
 </head>
-
 <body>
 
 <header>
-<h1>NYC Personal Assistant</h1>
-<p>专业双语陪同 · 医疗 · 行政 · 生活服务</p>
+    <h1>NYC Personal Assistant</h1>
+    <p>专业双语陪同 · 医疗陪诊 · 行政生活服务</p>
 </header>
 
 <div class="container">
+    
+    <!-- 服务内容 -->
+    <section id="services">
+        <h2>服务项目</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>医疗陪诊</h3>
+                <p>预约专家医生、医院现场翻译、病例沟通，确保沟通无障碍 [1]。</p>
+            </div>
+            <div class="card">
+                <h3>行政/政府</h3>
+                <p>DMV办证、社安局(SSA)业务、各类政府部门面谈陪同 [1, 2]。</p>
+            </div>
+            <div class="card">
+                <h3>商务与生活</h3>
+                <p>商务口译、展会翻译、高管差旅随行、购物跑腿及日常琐事处理 [1, 2]。</p>
+            </div>
+            <div class="card">
+                <h3>文件翻译</h3>
+                <p>证件翻译、医疗文件、法律文书及各类移民材料翻译 [1, 2]。</p>
+            </div>
+        </div>
+    </section>
 
-<h2>Services / 服务内容</h2>
+    <!-- 价格参考 -->
+    <section id="pricing">
+        <h2>透明价格</h2>
+        <div class="price-box">
+            <strong>个人/医疗陪同口译：</strong> <span class="price-tag">$150 / 小时</span>
+            <ul>
+                <li>最低收费 2 小时起 [3]</li>
+                <li>涵盖：医生预约、医院陪同、社区事务</li>
+            </ul>
+        </div>
+        <div class="price-box">
+            <strong>商务陪同/移民面谈：</strong> <span class="price-tag">$200 / 小时</span>
+            <ul>
+                <li>最低收费 2 小ys起 [3]</li>
+                <li>涵盖：商务洽谈、展会口译、移民局面谈 [3]</li>
+            </ul>
+        </div>
+        <p class="note">* 特惠：单次服务满 3 小时，免收交通费及停车费 [3]。</p>
+    </section>
 
-<div class="services-grid">
+    <!-- 为什么选择我们 -->
+    <section id="advantages">
+        <h2>核心优势</h2>
+        <div class="grid">
+            <div>
+                <ul class="adv-list">
+                    <li><strong>语言精准：</strong>精通中英双语，确保复杂思想的准确表达 [4]。</li>
+                    <li><strong>文化敏感：</strong>熟悉东西方文化背景，避免沟通误解 [4]。</li>
+                </ul>
+            </div>
+            <div>
+                <ul class="adv-list">
+                    <li><strong>记忆力强：</strong>能够快速捕捉并还原对话关键信息 [4]。</li>
+                    <li><strong>灵活应对：</strong>具备处理突发状况和复杂对话的协调能力 [4]。</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-<!-- 医疗 -->
-<div class="service-card" onclick="toggle(this)">
-<div class="service-img">
-<img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad">
-<div class="service-title">Medical 医疗陪诊</div>
-</div>
-<div class="service-content">
-<div class="service-detail">
-<ul>
-<li>预约医生</li>
-<li>医院陪同</li>
-<li>翻译</li>
-</ul>
-</div>
-</div>
-</div>
+    <!-- 客户评价 -->
+    <section id="reviews">
+        <h2>客户评价</h2>
+        <div class="grid">
+            <p>⭐⭐⭐⭐⭐ "非常专业，陪我去医院很安心！" [1]</p>
+            <p>⭐⭐⭐⭐⭐ "Helped me with DMV, super smooth experience." [1]</p>
+            <p>⭐⭐⭐⭐⭐ "Reliable and patient, highly recommended!" [1]</p>
+        </div>
+    </section>
 
-<!-- 行政 -->
-<div class="service-card" onclick="toggle(this)">
-<div class="service-img">
-<img src="https://images.unsplash.com/photo-1486326658981-ed68abe5868e">
-<div class="service-title">Government 行政</div>
-</div>
-<div class="service-content">
-<div class="service-detail">
-<ul>
-<li>DMV</li>
-<li>社安局</li>
-</ul>
-</div>
-</div>
-</div>
-
-<!-- 购物 -->
-<div class="service-card" onclick="toggle(this)">
-<div class="service-img">
-<img src="https://images.unsplash.com/photo-1508057198894-247b23fe5ade">
-<div class="service-title">Shopping 购物</div>
-</div>
-<div class="service-content">
-<div class="service-detail">
-<ul>
-<li>购物</li>
-<li>跑腿</li>
-</ul>
-</div>
-</div>
-</div>
-
-<!-- ✅ 修复后的翻译图片 -->
-<div class="service-card" onclick="toggle(this)">
-<div class="service-img">
-<img src="https://images.unsplash.com/photo-1455390582262-044cdead277a">
-<div class="service-title">Translation 翻译</div>
-</div>
-<div class="service-content">
-<div class="service-detail">
-<ul>
-<li>文件翻译</li>
-<li>医疗翻译</li>
-<li>口译</li>
-</ul>
-</div>
-</div>
-</div>
-
-</div>
-
-<!-- 联系 -->
-<div class="contact">
-<h2>Contact / 联系</h2>
-
-<p>📞 917-362-3277</p>
-<p>📧 zjie2025@gmail.com</p>
-
-<a href="sms:9173623277" class="btn sms-btn">📲 Send Text / 发短信</a>
-<a href="mailto:zjie2025@gmail.com" class="btn email-btn">📧 Email</a>
-</div>
-
-<!-- 表单 -->
-<h2>Book a Service / 预约服务</h2>
-
-<form action="mailto:zjie2025@gmail.com" method="post" enctype="text/plain">
-<input type="text" name="name" placeholder="Your Name / 姓名" required>
-<input type="tel" name="phone" placeholder="Phone / 电话">
-<textarea name="message" placeholder="Describe your request / 描述需求"></textarea>
-<button class="btn email-btn">Submit / 提交</button>
-</form>
-
-<!-- 评论 -->
-<h2>Client Reviews / 客户评价</h2>
-
-<div class="reviews">
-
-<div class="review">
-⭐️⭐️⭐️⭐️⭐️  
-非常专业，陪我去医院很安心！
-</div>
-
-<div class="review">
-⭐️⭐️⭐️⭐️⭐️  
-Helped me with DMV, super smooth experience.
-</div>
-
-<div class="review">
-⭐️⭐️⭐️⭐️⭐️  
-Reliable and patient, highly recommended!
-</div>
+    <!-- 联系与预约 -->
+    <section id="contact">
+        <h2>预约服务</h2>
+        <div class="contact-info">
+            <p>📞 电话: <strong>917-362-3277</strong></p>
+            <p>📧 邮箱: <strong>zjie2025@gmail.com</strong></p>
+            <p>📲 欢迎发送短信或邮件咨询</p>
+        </div>
+        
+        <form>
+            <input type="text" placeholder="您的姓名" required>
+            <input type="email" placeholder="您的邮箱" required>
+            <textarea rows="4" placeholder="请描述您需要的服务（时间、地点、内容）" required></textarea>
+            <button type="submit">提交预约</button>
+        </form>
+    </section>
 
 </div>
 
-</div>
-
-<script>
-function toggle(card){
-let d = card.querySelector(".service-detail");
-
-if(d.style.maxHeight){
-d.style.maxHeight=null;
-}else{
-d.style.maxHeight=d.scrollHeight+"px";
-}
-}
-</script>
+<footer>
+    <p>© 2026 NYC Personal Assistant. 提供纽约最专业的陪同翻译服务。</p>
+</footer>
 
 </body>
 </html>
